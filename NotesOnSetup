@@ -1,0 +1,76 @@
+Dons-iMac:mac-dev-playbook donhunt$ ansible-galaxy install -r requirements.yml
+ERROR! Unexpected Exception: No module named jinja2
+the full traceback was:
+
+Traceback (most recent call last):
+  File "/usr/local/bin/ansible-galaxy", line 78, in <module>
+    mycli = getattr(__import__("ansible.cli.%s" % sub, fromlist=[myclass]), myclass)
+  File "/usr/local/lib/python2.7/site-packages/ansible/cli/galaxy.py", line 31, in <module>
+    from jinja2 import Environment
+ImportError: No module named jinja2
+
+See if an upgrade of ansible via pip will help>
+
+Dons-iMac:mac-dev-playbook donhunt$ pip install ansible --upgrade
+Requirement already up-to-date: ansible in /usr/local/lib/python2.7/site-packages
+Collecting pycrypto>=2.6 (from ansible)
+  Using cached pycrypto-2.6.1.tar.gz
+Collecting paramiko (from ansible)
+  Downloading paramiko-2.1.1-py2.py3-none-any.whl (172kB)
+    100% |████████████████████████████████| 174kB 4.3MB/s
+Collecting setuptools (from ansible)
+  Downloading setuptools-32.3.0-py2.py3-none-any.whl (479kB)
+    100% |████████████████████████████████| 481kB 2.7MB/s
+Collecting jinja2 (from ansible)
+  Using cached Jinja2-2.8-py2.py3-none-any.whl
+Requirement already up-to-date: PyYAML in /usr/local/lib/python2.7/site-packages (from ansible)
+Collecting cryptography>=1.1 (from paramiko->ansible)
+  Downloading cryptography-1.7.1-cp27-cp27m-macosx_10_10_intel.whl (2.4MB)
+    100% |████████████████████████████████| 2.4MB 605kB/s
+Collecting pyasn1>=0.1.7 (from paramiko->ansible)
+  Using cached pyasn1-0.1.9-py2.py3-none-any.whl
+Collecting MarkupSafe (from jinja2->ansible)
+  Using cached MarkupSafe-0.23.tar.gz
+Requirement already up-to-date: six>=1.4.1 in /usr/local/lib/python2.7/site-packages (from cryptography>=1.1->paramiko->ansible)
+Requirement already up-to-date: cffi>=1.4.1 in /usr/local/lib/python2.7/site-packages (from cryptography>=1.1->paramiko->ansible)
+Collecting enum34 (from cryptography>=1.1->paramiko->ansible)
+  Using cached enum34-1.1.6-py2-none-any.whl
+Requirement already up-to-date: ipaddress in /usr/local/lib/python2.7/site-packages (from cryptography>=1.1->paramiko->ansible)
+Collecting idna>=2.0 (from cryptography>=1.1->paramiko->ansible)
+  Downloading idna-2.2-py2.py3-none-any.whl (55kB)
+    100% |████████████████████████████████| 61kB 7.0MB/s
+Requirement already up-to-date: pycparser in /usr/local/lib/python2.7/site-packages (from cffi>=1.4.1->cryptography>=1.1->paramiko->ansible)
+Building wheels for collected packages: pycrypto, MarkupSafe
+  Running setup.py bdist_wheel for pycrypto ... done
+  Stored in directory: /Users/donhunt/Library/Caches/pip/wheels/80/1f/94/f76e9746864f198eb0e304aeec319159fa41b082f61281ffce
+  Running setup.py bdist_wheel for MarkupSafe ... done
+  Stored in directory: /Users/donhunt/Library/Caches/pip/wheels/a3/fa/dc/0198eed9ad95489b8a4f45d14dd5d2aee3f8984e46862c5748
+Successfully built pycrypto MarkupSafe
+Installing collected packages: pycrypto, setuptools, pyasn1, enum34, idna, cryptography, paramiko, MarkupSafe, jinja2
+  Found existing installation: setuptools 32.1.0
+    Uninstalling setuptools-32.1.0:
+      Successfully uninstalled setuptools-32.1.0
+  Found existing installation: cryptography 1.5.3
+    Uninstalling cryptography-1.5.3:
+      Successfully uninstalled cryptography-1.5.3
+  Found existing installation: paramiko 2.0.2
+    Uninstalling paramiko-2.0.2:
+      Successfully uninstalled paramiko-2.0.2
+Successfully installed MarkupSafe-0.23 cryptography-1.7.1 enum34-1.1.6 idna-2.2 jinja2-2.8 paramiko-2.1.1 pyasn1-0.1.9 pycrypto-2.6.1 setuptools-32.3.0
+
+Now, repeat documented command from README.md>
+
+Dons-iMac:mac-dev-playbook donhunt$ ansible-galaxy install -r requirements.yml
+- downloading role 'dotfiles', owned by geerlingguy
+- downloading role from https://github.com/geerlingguy/ansible-role-dotfiles/archive/1.1.0.tar.gz
+- extracting geerlingguy.dotfiles to /Users/donhunt/Code/mac-dev-playbook/roles/geerlingguy.dotfiles
+- geerlingguy.dotfiles was installed successfully
+- downloading role 'homebrew', owned by geerlingguy
+- downloading role from https://github.com/geerlingguy/ansible-role-homebrew/archive/2.1.0.tar.gz
+- extracting geerlingguy.homebrew to /Users/donhunt/Code/mac-dev-playbook/roles/geerlingguy.homebrew
+- geerlingguy.homebrew was installed successfully
+- downloading role 'mas', owned by geerlingguy
+- downloading role from https://github.com/geerlingguy/ansible-role-mas/archive/1.0.0.tar.gz
+- extracting geerlingguy.mas to /Users/donhunt/Code/mac-dev-playbook/roles/geerlingguy.mas
+- geerlingguy.mas was installed successfully
+
