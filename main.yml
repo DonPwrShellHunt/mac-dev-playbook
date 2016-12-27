@@ -8,13 +8,13 @@
   pre_tasks:
     - include_vars: "{{ item }}"
       with_fileglob:
-        - ../config.yml  # relative path defaults to ./files, so ../config.yml is in main.yml directory
+        - "{{ playbook_dir }}/config.yml"  # better method to reference optional config.yml
       tags:
         - test
 
     - name: show confirmation of correct placement of config.yml
       debug:
-        msg: "config.yml is in main.yml directory? {{ config_visible | default('Guess NOT') }}"
+        msg: "config.yml is in playbook directory? {{ config_visible | default('Guess NOT') }}"
       tags:
         - test
 
