@@ -34,7 +34,7 @@ homebrew_taps:
   - caskroom/cask
   - caskroom/versions
   - homebrew/binary
-  - homebrew/completion
+  - homebrew/completions
   # - homebrew/php
   - homebrew/versions
 
