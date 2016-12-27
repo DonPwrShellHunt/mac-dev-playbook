@@ -27,7 +27,11 @@ This is a work in progress, and is mostly a means for me to document my current 
 
 Not everyone's development environment and preferred software configuration is the same.
 
-You can override any of the defaults configured in `default.config.yml` by creating a `config.yml` file and setting the overrides in that file. For example, you can customize the installed packages and apps with something like:
+> You can override any of the defaults configured in `default.config.yml` by creating `config.yml` (in the same directory) and setting the overrides in that file. 
+If you include `config_visible: true` in this file, and run `ansible-playbook main.yml -i inventory --tags test` a confirmation task will display a msg to indicate variable override is working.
+The config.yml cannot be added to git since it is included in .gitignore, but it can exist and influence the behavior of the playbook. 
+
+For example, you can customize the installed packages and apps with something like:
 
     homebrew_installed_packages:
       - cowsay
