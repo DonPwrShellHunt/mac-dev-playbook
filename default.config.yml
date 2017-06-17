@@ -28,6 +28,9 @@ homebrew_installed_packages:
   - readline
   - openssl
   - wget
+  -  { name: curl, install_options: "with-openssl" }
+
+homebrew_uninstalled_packages: []
 
 homebrew_taps:
   - homebrew/core
@@ -67,6 +70,5 @@ homebrew_cask_apps:
   - vlc
 
 # See `geerlingguy.mas` role documentation for usage instructions.
-mas_installed_app_ids: []
 mas_email: ""
 mas_password: ""
